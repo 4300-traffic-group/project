@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
+    <script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Neovis.js Simple Example</title>
+    <style type="text/css">
+        html, body {
+            font: 16pt arial;
+        }
+
+        #viz {
+            width: 900px;
+            height: 700px;
+            border: 1px solid lightgray;
+            font: 22pt arial;
+        }
+    </style>
+</head>
+<body onload="draw()">
+<div style="width: 100%">
+
+    <div id="viz" style="width: 60%; float: left"></div>
+    <div style="right: 40%; float: left; justify-content: left; overflow-wrap: normal; font-size: 13px; margin-left: 10px" >
+        <p>
+            <b>Set the streets limit (Higher limit will be slower) – Default: 100</b><br>
+
+            Street Limit: <textarea rows="1" cols=20 id="nodes"></textarea><br>
+
+            <input type="submit" value="Submit" id="nodes-limit">
+        </p>
+
+
+
+        <p>
+            <input type="submit" value="Load Everything" id="load">
+        </p>
+
+        <p>
+            <input type="submit" value="Switch Formats" id="format">
+        </p>
+
+        <hr>
+        <p>
+            <b>Find routes including or in between two streets</b> <br>
+
+            Street 1: <textarea rows="1" cols=20 id="street1"></textarea><br>
+            Street 2: <textarea rows="1" cols=20 id="street2"></textarea> (Optional) <br>
+
+            <input type="submit" value="Submit" id="streets-reload">
+        </p>
+
+        <p>
+            <b>Find all streets within an 5-digit zip-code</b><br>
+
+            Zipcode: <textarea rows="1" cols=20 id="zip1" maxlength="5"></textarea><br>
+
+            <input type="submit" value="Submit" id="zipcode-reload">
+        </p>
+
+        <br><br>
+        <p>
+            <b>Custom Cypher query</b> <br>
+
+            Query:  <textarea rows="4" cols=50 id="cypher"></textarea><br>
+
+            <input type="submit" value="Submit" id="cypher-reload">
+        </p>
+
+
+    </div>
+</div>
+
+<script src="response.js"></script>
+<script src="roads.js"></script>
+
+</body>
+</html>
