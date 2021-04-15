@@ -17,6 +17,12 @@ function draw() {
                     return ""
                 },
                 "community": "zip",
+                "title_properties": [
+                    "<id>",
+                    "long",
+                    "lat",
+                    "zip"
+                ]
             }
 
         },

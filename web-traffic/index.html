@@ -47,7 +47,7 @@
 
         <hr>
         <p>
-            <b>Find routes including or in between two streets</b> <br>
+            <b>Find the intersections including or with two streets</b> <br>
 
             Street 1: <textarea rows="1" cols=20 id="street1"></textarea><br>
             Street 2: <textarea rows="1" cols=20 id="street2"></textarea> (Optional) <br>
@@ -61,6 +61,19 @@
             Zipcode: <textarea rows="1" cols=20 id="zip1" maxlength="5"></textarea><br>
 
             <input type="submit" value="Submit" id="zipcode-reload">
+        </p>
+
+        <p>
+            <b>Find the path with the shortest amount of intersections (non-weighted) <br>
+            between two intersections</b> <br>
+
+            Intersection 1: <textarea rows="1" cols=20 id="intersection1-s1"></textarea>
+            <textarea rows="1" cols=20 id="intersection1-s2"></textarea>
+            <br>
+            Intersection 2: <textarea rows="1" cols=20 id="intersection2-s1"></textarea>
+            <textarea rows="1" cols=20 id="intersection2-s2"></textarea>
+
+            <input type="submit" value="Submit" id="shortest-intersection">
         </p>
 
         <br><br>
