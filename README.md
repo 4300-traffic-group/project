@@ -79,7 +79,7 @@ WHERE whitelist.id IN nodeIds
 WITH p, collect(whitelist) AS whitelistNodes
 CALL apoc.path.subgraphAll(p, {
 relationshipFilter: "Street",
-minLevel: 1,
+minLevel: 0,
 whitelistNodes: whitelistNodes
 })
 
