@@ -6,23 +6,29 @@ In MySQL (or other RDB) make a new connection, make a schema and load the 10 cre
 
 Start Neo4j, clear the database and run the following, for each of the 10 files/tables. Everything in brackets needs to be replaced with the appropriate info.
 
-`Call apoc.load.jdbc("jdbc:mysql://localhost:3306/[schema_name]?serverTimezone=EST5EDT&user=[user]&password=[password]", "streets[x]") YIELD row
+```
+Call apoc.load.jdbc("jdbc:mysql://localhost:3306/[schema_name]?serverTimezone=EST5EDT&user=[user]&password=[password]", "streets[x]") YIELD row
 merge (i1:Intersec {lat:row.x1, long:row.y1, zip: row.pin1})
 merge (i2:Intersec {lat:row.x2, long:row.y2, zip: row.pin2})
 merge (i1)-[:Street {name:row.street, dist: row.manhattan, speed:row.speed}]->(i2)
-return i1, i2`
+return i1, i2
+```
 
 After everything is called, run the following to create database-specific ids for each intersection
 
-`MATCH (p:Intersec) 
+```
+MATCH (p:Intersec) 
 WHERE NOT EXISTS(p.id) 
 SET p.id = id(p)
-RETURN p`
+RETURN p
+```
 
 
 Queries:
-`match (n1:Intersec)<-[s1:Street{name:name1}]-(n2:Intersec)-[s2:Street{name:name2}]->(n3:Intersec)
-return n1, n2, n3`
+```
+match (n1:Intersec)<-[s1:Street{name:name1}]-(n2:Intersec)-[s2:Street{name:name2}]->(n3:Intersec)
+return n1, n2, n3
+```
 
 name1 Forsyth and name2 Huntington - 2 webs, Forsyth St and Forsyth Way?
 name1 Forsyth and name2 Hemenway - what we'd expect (only Forsyth St intersects Hemenway)
@@ -48,7 +54,7 @@ CALL gds.graph.create(
    
 )
 ```
-Runs the Dijkstra Source-Target Algorithm & Returns the subgraph
+Runs the Dijkstra Source-Target Algorithm based on distance & Returns the subgraph
 
 ```
 CALL {
