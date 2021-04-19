@@ -34,6 +34,16 @@ name1 Forsyth and name2 Huntington - 2 webs, Forsyth St and Forsyth Way?
 name1 Forsyth and name2 Hemenway - what we'd expect (only Forsyth St intersects Hemenway)
 name1 Parker and name2 Huntington - 1 web but kind of big so slightly confusing?
 
+Undirected Intersection finding
+```
+MATCH (n: Intersec)-[r:Street{name:"${street1}"}]->(m: Intersec)-[r2:Street{name:"${street2}"}]-(n2:Intersec) RETURN * LIMIT ${nodes} UNION
+MATCH (n: Intersec)-[r:Street{name:"${street2}"}]->(m: Intersec)-[r2:Street{name:"${street1}"}]-(n2:Intersec) RETURN * LIMIT ${nodes}
+```
+
+Zip-code Finding
+```
+MATCH (n: Intersec{zip:${zip1}})-[r:Street]->(m: Intersec{${zip1}}) RETURN * LIMIT ${nodes}
+```
 
 Shortest path based on distance. Make sure you have the 1.5 version of the Graph Data Science (GDS) plugin installed.
 
